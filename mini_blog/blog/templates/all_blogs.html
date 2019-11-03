@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>All blogs</title>
-</head>
-<body>
+{% extends "home.html" %}
 
-</body>
-</html>
+{% block title %} <title>All bloggs.</title>  {% endblock %}
+
+{% block h1 %} <h1> All bloggs.</h1> <hr> {% endblock %}
+
+{% block content %}
+<p><strong>Post date</strong></p> {{blog.publication_date}}
+
+{% endblock %}

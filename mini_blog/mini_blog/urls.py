@@ -19,7 +19,6 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     re_path('admin/', admin.site.urls),
-    re_path(r'', include('blog.urls')),
-    re_path(r'^blog/', RedirectView.as_view(url='/blog/', permanent=True)),
-
+    re_path(r'^blog/', include('blog.urls')),
+    re_path(r'^$', RedirectView.as_view(url='/blog/', permanent=True)),
 ]

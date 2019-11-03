@@ -7,13 +7,13 @@ from django.contrib.auth.models import User #Blog author or commenter
 
 
 class Author(models.Model):
-    name = models.TextField(max_length=50)
-    surname = models.TextField(max_length=50)
+    name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
     bio = models.TextField(max_length=400, help_text="Enter your bio details here")
     date_birth = models.DateField(auto_now=False)
 
     def __str__(self):
-        return self.surname.name
+        return self.surname + " " + self.name
 
     # def get_absolute_url(self):
     #     """
