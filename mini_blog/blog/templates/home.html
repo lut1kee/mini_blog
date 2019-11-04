@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% block title %} <title>Home page</title>  {% endblock %}
+    {% block title %} <title>Django DIY Blog</title>  {% endblock %}
     <style>
         h1{
             text-align: center;
@@ -22,7 +22,7 @@
     {% block h1 %} <h1> Home page.</h1> <hr> {% endblock %}
     <ul class="main_menu">
         <li><a href="/blog/">Home</a></li>
-        <li><a href="/blog/all-bloggs/">All blogs</a></li>
+        <li><a href="/blog/blogs/">All blogs</a></li>
         <li><a href="/blog/bloggers/">All bloggers</a></li>
     </ul>
     {% block content %}
@@ -40,5 +40,26 @@
         per month with Hostinger. Bluehost offer web hosting, Free SSL, Email, web builder and a FREE DOMAIN for as little as $2.95 a month.
     </div>
     {% endblock %}
+
+    <div>
+        {% block pagination %}
+        {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+        {% endblock %}
+    </div>
+
 </body>
 </html>

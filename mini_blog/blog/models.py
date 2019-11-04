@@ -15,11 +15,11 @@ class Author(models.Model):
     def __str__(self):
         return self.surname + " " + self.name
 
-    # def get_absolute_url(self):
-    #     """
-    #     Returns the url to access a particular blog-author instance.
-    #     """
-    #     return reverse('blogs-by-author', args=[str(self.id)])
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular blog-author instance.
+        """
+        return reverse('blogs-by-author', args=[str(self.pk)])
 
 
 class Blog(models.Model):
@@ -31,11 +31,14 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     """
-    #     Returns the url to access a particular blog instance.
-    #     """
-    #     return reverse('blog-detail', args=[str(self.id)])
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular blog instance.
+        """
+        return reverse('blog-detail', args=[str(self.pk)])
+
+    class Meta:
+        ordering = ["-publication_date"]
 
 
 class Comment(models.Model):
